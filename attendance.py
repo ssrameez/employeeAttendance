@@ -23,9 +23,24 @@ def _recordSwipeRec(eNode, EId):
                     _recordSwipeRec(eNode.right, EId)
 
 def _getSwipeRec(eNode):
+    print("Total number of employees recorded today: " + str(findTotalEmployeesToday(employeeAttendance)))
+
+def findTotalEmployeesToday(eNode):
     if eNode is None:
         return 0
-    return 1 + _getSwipeRec(eNode.left) + _getSwipeRec(eNode.right)
+    return 1 + findTotalEmployeesToday(eNode.left) + findTotalEmployeesToday(eNode.right)
+
+def _onPremisesRec(eNode):
+    numOfEmployeesOnPrem = findOnPrem(eNode)
+    if numOfEmployeesOnPrem > 0:
+        print( str(numOfEmployeesOnPrem) + " employees still on premises")
+    else:
+        print("No employees present on premises.")
+    
+def findOnPrem(eNode):
+    if eNode is None:
+        return 0
+    return (eNode.attCtr % 2) + findOnPrem(eNode.left) + findOnPrem(eNode.right)
 
 def _printTree(tree):
     if tree != None:
@@ -49,8 +64,12 @@ employeeAttendance = EmpNode(21)
 _recordSwipeRec(employeeAttendance, 23)
 _recordSwipeRec(employeeAttendance, 22)
 _recordSwipeRec(employeeAttendance, 41)
-_recordSwipeRec(employeeAttendance, 22)
-print("Total number of employees recorded today: " + str(_getSwipeRec(employeeAttendance)))
+_recordSwipeRec(employeeAttendance, 21)
+
+_printTree(employeeAttendance)
+_getSwipeRec(employeeAttendance)
+_onPremisesRec(employeeAttendance)
+
 
 # _printTree(employeeAttendance)
 
