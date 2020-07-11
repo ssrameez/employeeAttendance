@@ -1,3 +1,5 @@
+from helperMehods import *
+
 class EmpNode:
     def __init__(self, EId):
         self.EmpId = EId
@@ -25,11 +27,6 @@ def _recordSwipeRec(eNode, EId):
 def _getSwipeRec(eNode):
     print("Total number of employees recorded today: " + str(findTotalEmployeesToday(employeeAttendance)))
 
-def findTotalEmployeesToday(eNode):
-    if eNode is None:
-        return 0
-    return 1 + findTotalEmployeesToday(eNode.left) + findTotalEmployeesToday(eNode.right)
-
 def _onPremisesRec(eNode):
     numOfEmployeesOnPrem = findOnPrem(eNode)
     if numOfEmployeesOnPrem > 0:
@@ -37,40 +34,55 @@ def _onPremisesRec(eNode):
     else:
         print("No employees present on premises.")
     
-def findOnPrem(eNode):
-    if eNode is None:
-        return 0
-    return (eNode.attCtr % 2) + findOnPrem(eNode.left) + findOnPrem(eNode.right)
-
-def _printTree(tree):
-    if tree != None:
-        _printTree(tree.left)
-        print(tree.EmpId, tree.attCtr)
-        _printTree(tree.right)
 
 
-# def _getSwipeRec(self, eNode):
 
-# def _onPremisesRec(self, eNode, eId):
+def _checkEmpRec(eNode, EId):
+    attCtr = search(eNode, EId)
+    if attCtr is None:
+        print("Employee id "+str(EId)+" did not swipe today")
+    elif attCtr % 2 == 0:
+        print("Employee id "+str(EId)+" swiped "+str(attCtr)+" times today and is currently outside office")
+    else:
+        print("Employee id "+str(EId)+" swiped "+str(attCtr)+" times today and is currently in office")
+        
 
-# def _checkEmpRec(self, eNode, EId):
+def _frequentVisitorRec(eNode, freq):
+    findEmployeesGreaterThanFreq(eNode, freq)
+    if(len(listOfEmployees) > 0):
+        print("Employees that swiped more than "+str(freq)+" number of times today are:")
+        for emp in listOfEmployees:
+            print (str(emp.EmpId) + ", " + str(emp.attCtr))
+    else:
+        print("No employee swiped more than " +str(freq)+ " times today")
 
-# def _frequentVisitorRec(self, eNode):
-
-# def printRangePresent(self, StartId, EndId):
+def _printRangePresent(eNode, StartId, EndId):
+    findEmployeesInRange(eNode, StartId, EndId)
+    if(len(listOfEmployees) > 0):
+        print("Range "+str(StartId)+ " to " +str(EndId))
+        for emp in listOfEmployees:
+            print (str(emp.EmpId) + ", " + str(emp.attCtr) + ", " + ("in" if emp.attCtr%2 != 0 else "out"))
+    else:
+        print("No employee in range "+str(StartId)+ " to " +str(EndId))
 
 
 employeeAttendance = EmpNode(21)
+
 _recordSwipeRec(employeeAttendance, 23)
 _recordSwipeRec(employeeAttendance, 22)
 _recordSwipeRec(employeeAttendance, 41)
 _recordSwipeRec(employeeAttendance, 21)
 
-_printTree(employeeAttendance)
 _getSwipeRec(employeeAttendance)
+
 _onPremisesRec(employeeAttendance)
 
+_checkEmpRec(employeeAttendance, 21)
+_checkEmpRec(employeeAttendance, 22)
+_checkEmpRec(employeeAttendance, 222)
 
-# _printTree(employeeAttendance)
+_frequentVisitorRec(employeeAttendance, 0)
+_printRangePresent(employeeAttendance, 21 , 22)
+
 
 
