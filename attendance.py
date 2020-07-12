@@ -33,7 +33,7 @@ def _onPremisesRec(eNode):
         print( str(numOfEmployeesOnPrem) + " employees still on premises")
     else:
         print("No employees present on premises.")
-    
+
 
 
 
@@ -45,7 +45,7 @@ def _checkEmpRec(eNode, EId):
         print("Employee id "+str(EId)+" swiped "+str(attCtr)+" times today and is currently outside office")
     else:
         print("Employee id "+str(EId)+" swiped "+str(attCtr)+" times today and is currently in office")
-        
+
 
 def _frequentVisitorRec(eNode, freq):
     findEmployeesGreaterThanFreq(eNode, freq)
@@ -83,6 +83,3 @@ _checkEmpRec(employeeAttendance, 222)
 
 _frequentVisitorRec(employeeAttendance, 0)
 _printRangePresent(employeeAttendance, 21 , 22)
-
-
-
