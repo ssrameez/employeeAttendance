@@ -1,0 +1,51 @@
+def _recordSwipeRec(self, eNode, Eid)
+    This function reads from the inputPS5.txt file the ids of employees entering and leaving the organization premises. One employee id should be populated per line (in the input text file) indicating their swipe (entry or exit). The input data is used to populate the tree. If the employee id is already added to the tree, then the swipe counter is incremented for every subsequent occurrence of that employee id in the input file. Use a trigger function to call this recursive function from the root node.
+    - implemented.
+
+    Sample input considered.
+    [22,23,21,34,45,55,30,34,56,45]
+
+    Time Analysis
+    =============
+      1. (tree representation)
+              22 (freq : 1)
+                  /       \
+          21(freq : 1)     23 (freq : 1)
+                             \
+                              34(freq : 2)
+                                 \
+                                  45 (freq : 2)
+                                    \
+                                     55 (freq : 1)
+                                     /        \
+                            30(freq : 1)       56 (freq : 1)
+
+       2. insertion has time complexity could be O(n) - in a worst case scenario where the input sequence given is in ascending order.
+       3. This algorithm can be improved with a balanced tree, which requires AVL or Red/Black algorithm which requires modification in the data structure to include either height or color as an attribute.
+       4. Incase of a balanced binary tree the time complexity will be O(log n)
+
+
+Def _getSwipeRec(self, eNode)
+    This function counts the total number of employees who came to office today.
+    - Implemented.
+
+
+def _onPremisesRec(self, eNode, eId)
+    This function searches for all employees that are still on the premises and outputs the total count of such employees. The function is triggered with the following tag from the file promptsPS5.txt.
+    - Implemented
+
+def _checkEmpRec(self, eNode, EId):
+
+    This function counts the number of times a particular employee swiped today and if the employee is currently in the office or outside.
+    - Implemented
+
+
+
+def _frequentVisitorRec(self, eNode):
+    This function generates the list of employees who have swiped more than x number of times.
+    - Implemented
+
+def _printRangePresent(self, StartId, EndId):
+    This function prints the employee ids in the range StartId to EndId and how often they have swiped and if they are inside or outside the office into the outputPS5.txt file.
+    - Implemented
+    - in the document _ (underscore) is missing.
