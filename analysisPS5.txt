@@ -5,8 +5,9 @@ def _recordSwipeRec(self, eNode, Eid)
     Sample input considered.
     [22,23,21,34,45,55,30,34,56,45]
 
-    Time Analysis
-    =============
+    Time Complexity Analysis
+    ========================
+
       1. (tree representation)
               22 (freq : 1)
                   /       \
@@ -29,23 +30,51 @@ Def _getSwipeRec(self, eNode)
     This function counts the total number of employees who came to office today.
     - Implemented.
 
+    Time Complexity Analysis
+    ========================
+
+    1. This method would show a time complexity of O(n).
+    2. This has to traverse through each node.  each node represent an employee.
+    3. In this case height doesn't make a difference.
 
 def _onPremisesRec(self, eNode, eId)
     This function searches for all employees that are still on the premises and outputs the total count of such employees. The function is triggered with the following tag from the file promptsPS5.txt.
     - Implemented
+
+    Time Complexity Analysis
+    ========================
+
+    1. This method would show a time complexity of O(n).
+    2. This has to traverse through each node.  each node represent an employee.
+    3. In this case height doesn't make a difference.
 
 def _checkEmpRec(self, eNode, EId):
 
     This function counts the number of times a particular employee swiped today and if the employee is currently in the office or outside.
     - Implemented
 
+    Time Complexity Analysis
+    ========================
+
+    1. This method would show a time complexity of O(n).
+    2. first we have to traverse to the correct node.
+    3. Though it doesn't need to traverse through each record, due to the unbalanced nature of the binary tree, time complexity will be O(n)
+    4. This could be improved with balanced binary tree.
 
 
 def _frequentVisitorRec(self, eNode):
     This function generates the list of employees who have swiped more than x number of times.
     - Implemented
 
+    1. This method would show a time complexity of O(n).
+    2. need to traverse through each node to find the frequency of check-in.
+
 def _printRangePresent(self, StartId, EndId):
     This function prints the employee ids in the range StartId to EndId and how often they have swiped and if they are inside or outside the office into the outputPS5.txt file.
     - Implemented
     - in the document _ (underscore) is missing.
+
+    1. let delta = diff (StartId-EndID)
+    2. let endoffset = diff (lastnode - EndID)
+    3. Time complexity could be O(delta + endoffset)
+    4. This could be written as O(n) as n tends to a large number.
