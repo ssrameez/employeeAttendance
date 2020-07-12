@@ -23,18 +23,21 @@ def findEmployeesInRange(eNode, StartId, EndId):
 def findEmployeesGreaterThanFreq(eNode, freq):
     if eNode != None:
         findEmployeesGreaterThanFreq(eNode.left, freq)
-        if eNode.attCtr > freq:
+        if eNode.attCtr >= freq:
             listOfEmployees.append(eNode)
         findEmployeesGreaterThanFreq(eNode.right, freq)
 
 def search(eNode, empId):
         if eNode.EmpId == empId:
             return eNode.attCtr
-        if eNode.left is not None:
+        if eNode.left is not None and eNode.EmpId > empId:
             temp =  search(eNode.left, empId)
             if temp is not None:
                 return temp
-        if eNode.right is not None:
+        if eNode.right is not None and eNode.EmpId <= empId:
             temp =  search(eNode.right, empId)
             return temp
         return None
+
+def clearList():
+    listOfEmployees[:] = []
